@@ -26,10 +26,25 @@ println()
 
 // 2.6
 def multiunicode(s : String) = {
-    var res = 1
+    var res : Long = 1
     for (c <- s)
-        res *= c
+        res *= c.toLong
     res
 }
 println(multiunicode("Hello"))
 println()
+
+// 2.7 
+println("Hello".foldLeft(1L)(_*_.toLong))
+
+// 2.9 
+def prod(str : String) : Long  = { 
+    if (str.length == 0)
+        0   
+    else if (str.length == 1)
+        str(0).toLong
+    else
+        str(0)*prod(str.substring(1))
+}
+println(prod("Hello"))
+
