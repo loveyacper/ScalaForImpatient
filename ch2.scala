@@ -48,3 +48,25 @@ def prod(str : String) : Long  = {
 }
 println(prod("Hello"))
 
+// 2.10
+def power(x : Int, n : Int) : Float = { 
+    if (n == 0) {
+        1   
+    }   
+    else if (n < 0) {
+        1 / power(x, -n) 
+    }   
+    else {
+        if (n % 2 == 0)
+            power(x, n / 2) * power(x, n / 2)
+        else
+            x * power(x, n - 1)
+    }   
+}
+
+println(power(2, 0)) 
+println(power(2, -2))
+println(power(2, 2)) 
+println(power(2, -3))
+println(power(2, 3)) 
+
