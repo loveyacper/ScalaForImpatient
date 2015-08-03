@@ -34,6 +34,13 @@ def largest(fun : (Int)=>Int, inputs : Seq[Int]) = inputs.map(fun(_)).max
 
 println(largest(x => 10 * x - x * x, 1 to 10))
 
+// 12.6
+def largestParam(func : (Int)=>Int, inputs : Seq[Int]) = { 
+    inputs.map((m) => (m, func(m))).reduceLeft((x,y)=>if (x._2 > y._2) x else y)._1
+}
+    
+println(largestParam(x => 10 * x - x * x, 1 to 10))
+
 // 12.10 Make a "keyword" unless, similar to !if 
 def unless(cond: => Boolean)(block: => Unit) { 
     if (!cond) { 
