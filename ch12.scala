@@ -41,6 +41,12 @@ def largestParam(func : (Int)=>Int, inputs : Seq[Int]) = {
     
 println(largestParam(x => 10 * x - x * x, 1 to 10))
 
+// 12.7
+def  adjustToPairs(fun : (Int, Int) => Int) = (p : (Int, Int)) => fun(p._1, p._2)
+
+val pairs = (1 to 5) zip (6 to 10) 
+println(pairs.map(adjustToPairs(_ + _)))
+
 // 12.10 Make a "keyword" unless, similar to !if 
 def unless(cond: => Boolean)(block: => Unit) { 
     if (!cond) { 
