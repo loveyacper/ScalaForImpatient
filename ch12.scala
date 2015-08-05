@@ -47,6 +47,13 @@ def  adjustToPairs(fun : (Int, Int) => Int) = (p : (Int, Int)) => fun(p._1, p._2
 val pairs = (1 to 5) zip (6 to 10) 
 println(pairs.map(adjustToPairs(_ + _)))
 
+// 12.8
+val strArray = Array("hello", "World")
+val falseArray = Array(3, 5)
+val trueArray = Array(5, 5)
+println(strArray.corresponds(falseArray)((a, b) => a.length == b)) 
+println(strArray.corresponds(trueArray)((a, b) => a.length == b)) 
+
 // 12.10 Make a "keyword" unless, similar to !if 
 def unless(cond: => Boolean)(block: => Unit) { 
     if (!cond) { 
