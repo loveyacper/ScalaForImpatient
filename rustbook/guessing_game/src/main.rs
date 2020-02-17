@@ -12,11 +12,14 @@ fn main() {
     loop {
         println!("Please input your guess.");
 
+        // std::string guess;
         let mut guess = String::new();
 
+        // in crate std, mod io:  pub fn stdin() -> Stdin
         io::stdin().read_line(&mut guess)
             .expect("Failed to read line");
 
+        // const uint32_t guess = ;
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,

@@ -26,6 +26,7 @@ pub(crate) fn main() -> Result<()> {
 async fn accept_loop(addr: impl ToSocketAddrs) -> Result<()> {
     let listener = TcpListener::bind(addr).await?;
 
+    // 创建一个channel，用于和broker通信，broker负责处理on_connect, on_message
     let (broker_sender, broker_receiver) = mpsc::unbounded();
     let broker = task::spawn(broker_loop(broker_receiver));
     let mut incoming = listener.incoming();
@@ -49,6 +50,7 @@ async fn connection_loop(mut broker: Sender<Event>, stream: TcpStream) -> Result
         Some(line) => line?,
     };
     let (_shutdown_sender, shutdown_receiver) = mpsc::unbounded::<Void>();
+    // 告知broker有一个新链接建立了
     broker
         .send(Event::NewPeer {
             name: name.clone(),
@@ -70,6 +72,7 @@ async fn connection_loop(mut broker: Sender<Event>, stream: TcpStream) -> Result
             .collect();
         let msg: String = msg.trim().to_string();
 
+        // 告知broker有新消息到达
         broker
             .send(Event::Message {
                 from: name.clone(),
@@ -83,9 +86,10 @@ async fn connection_loop(mut broker: Sender<Event>, stream: TcpStream) -> Result
     Ok(())
 }
 
+// 因为不能并发写同一个socket，所以一个socket只让一个task去write
 async fn connection_writer_loop(
     messages: &mut Receiver<String>,
-    stream: Arc<TcpStream>,
+    stream: Arc<TcpStream>, // 与connection_loop共享tcp stream
     mut shutdown: Receiver<Void>,
 ) -> Result<()> {
     let mut stream = &*stream;
