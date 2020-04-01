@@ -26,10 +26,11 @@ func SubarrayNum(nums []int, gap int) int {
             end++
         } else {
             max := nums[qmax[0]]
-            min := nums[qmin[0]]
             if max < nums[end] {
                 max = nums[end]
             }
+
+            min := nums[qmin[0]]
             if min > nums[end] {
                 min = nums[end]
             }
@@ -39,6 +40,7 @@ func SubarrayNum(nums []int, gap int) int {
                 updateAdd(nums, end, &qmin, &qmax)
                 end++
             } else {
+                // 统计以start为起点的满足条件的子数组数量
                 count += (end - start)
                 updateRemove(start, &qmin, &qmax)
                 start++
@@ -54,36 +56,28 @@ func SubarrayNum(nums []int, gap int) int {
 func updateAdd(nums []int, add int, qmin* []int, qmax* []int) {
     v := nums[add]
 
-    insert := false
     for i, iv := range *qmin {
         if nums[iv] >= v {
             *qmin = (*qmin)[:i]
-            *qmin = append(*qmin, add)
-            insert = true
             break
         }
     }
-    if !insert {
-        *qmin = append(*qmin, add)
-    }
+    *qmin = append(*qmin, add)
 
-    insert = false
     for i, iv := range *qmax {
         if nums[iv] <= v {
             *qmax = (*qmax)[:i]
-            *qmax = append(*qmax, add)
-            insert = true
             break
         }
     }
-    if !insert {
-        *qmax = append(*qmax, add)
-    }
+
+    *qmax = append(*qmax, add)
 }
 func updateRemove(remove int, qmin* []int, qmax* []int) {
     if (*qmin)[0] == remove {
         (*qmin) = (*qmin)[1:]
     }
+
     if (*qmax)[0] == remove {
         (*qmax) = (*qmax)[1:]
     }

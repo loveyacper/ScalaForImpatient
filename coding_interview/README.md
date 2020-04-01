@@ -17,7 +17,7 @@
 ## 栈和队列
 * [设计一个有GetMin功能的栈](src/ch1/min_stack.go)
 * [两个栈组成的队列](src/ch1/stack2queue.go)
-* [猫狗队列](src/ch1/cat_dog_queue.go)
+* [猫狗队列](src/ch1/cat_dog.go)
 * [栈排序](src/ch1/stack_sort.go)
 * [滑动窗口最大值](src/ch1/max_slide_window.go)
 * [单调栈结构](src/ch1/monotonic_stack.go)
@@ -25,6 +25,16 @@
 * [最大最小值之差小于某值的子数组数量](src/ch1/minmax_subarray_num.go)
 
 ## 链表
+* [打印有序链表公共部分](src/ch2/common_list.go)
+* [删除倒数第K个节点](src/ch2/remove_last_k.go)
+* [反转链表](src/ch2/reverse_list.go)
+* [反转部分链表](src/ch2/reverse_list_range.go)
+* [判断回文链表](src/ch2/is_parlindome.go)
+* [分割链表](src/ch2/partition_list.go)
+* [选择排序链表](src/ch2/select_list.go)
+* [按K组反转链表](src/ch2/reverse_list_kgroup.go)
+* [删除重复元素](src/ch2/remove_duplicates.go)
+* [奇偶交叉合并](src/ch2/rearrange_list.go)
 
 ## 二叉树
 
@@ -38,7 +48,7 @@
 ## 位运算
 
 ## 数组和矩阵
-* [在行列有序的矩阵中查找](src/ch8/search_in_2dmatrix_test.go)
+* [在行列有序的矩阵中查找](src/ch8/search_in_2dmatrix.go)
 
 ## 其它题目
 
