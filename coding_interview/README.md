@@ -41,7 +41,17 @@
 ## 递归和动态规划
 
 ## 字符串
+* [同位异形词](src/ch5/is_anagram.go)
+* [旋转词](src/ch5/is_rotate.go)
 * [字符串的调整与替换](src/ch5/replace_blank.go)
+* [字符串的统计字符串](src/ch5/stat_string.go)
+* [在可空字符串数组中查找](src/ch5/search_string_null.go)
+* [翻转单词](src/ch5/reverse_words.go)
+* [数组中字符串最近距离](src/ch5/shortest_words_distance.go)
+* [旋变字符串](src/ch5/scramble_string.go)
+* [删除重复字符得到最小字典序](src/ch5/remove_duplicate_letters.go)
+* [最长无重复子串](src/ch5/non_repeat_substring.go)
+* [添加最少字符变成回文串](src/ch5/min_insert_palindrome.go)
 
 ## 大数据和空间限制
 
